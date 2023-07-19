@@ -1,0 +1,6 @@
+spring:
+  redis:
+    host: 服务器ip
+    database: 0
+    port: 6379
+
