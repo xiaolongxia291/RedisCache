@@ -1,8 +1,10 @@
 package com.tracy.rediscache;
 
+import com.tracy.rediscache.aop.MyAspect;
 import com.tracy.rediscache.cache.AccessLimit;
 import com.tracy.rediscache.cache.ReadWrite;
 import com.tracy.rediscache.cache.TopN;
+import com.tracy.rediscache.controller.TestController;
 import com.tracy.rediscache.entity.Student;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +24,10 @@ class RedisCacheApplicationTests {
     AccessLimit accessLimit;
     @Autowired
     RedisTemplate<String,Object> redisTemplate;
+    @Autowired
+    MyAspect myAspect;
+    @Autowired
+    TestController testController;
 
 
     @Test
@@ -51,6 +57,19 @@ class RedisCacheApplicationTests {
     void testAccessLimit(){
         for(int i=0;i<20;++i){
             System.out.println(accessLimit.accessLimit("/student"));
+        }
+    }
+
+    @Test
+    void testMyAspect(){
+        for(int i=0;i<10;++i){
+            testController.test1();
+        }
+        for(int i=0;i<10;++i){
+            testController.test2();
+        }
+        for(int i=0;i<10;++i){
+            testController.test3();
         }
     }
 

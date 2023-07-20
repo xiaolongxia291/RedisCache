@@ -6,7 +6,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Field;
-import java.util.concurrent.TimeUnit;
 
 @Component
 public class TopN {
@@ -16,7 +15,6 @@ public class TopN {
     RedisTemplate<String,Object> redisTemplate;
     @Value("${redis.N}")
     int N;
-
 
     public void write(String keyword,Object obj) throws IllegalAccessException {
         //1 获取反射
