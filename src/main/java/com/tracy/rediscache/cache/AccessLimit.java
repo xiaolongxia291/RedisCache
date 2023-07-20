@@ -16,16 +16,16 @@ public class AccessLimit {
     @Value("${redis.access}")
     int access;
 
-    public String accessLimit(String url){
+    public boolean accessLimit(String url){
         //1 如果是首次访问
         redisTemplate.opsForValue().setIfAbsent(url,0,time, TimeUnit.SECONDS);
         //2 +1
         redisTemplate.opsForValue().increment(url,1);
         //3 判断是否达到次数限制
         if(redisTemplate.opsForValue().get(url)>access){
-            return url+"达到访问次数限制";
+            return false;
         }else{
-            return url+"访问成功";
+            return true;
         }
     }
 }

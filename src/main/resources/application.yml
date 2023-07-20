@@ -1,6 +1,6 @@
 spring:
   redis:
-    host: ip
+    host: 服务器ip
     database: 0
     port: 6379
 

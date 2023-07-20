@@ -11,9 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.redis.core.RedisTemplate;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
 @SpringBootTest
 class RedisCacheApplicationTests {
     @Autowired
@@ -62,15 +59,20 @@ class RedisCacheApplicationTests {
 
     @Test
     void testMyAspect(){
-        for(int i=0;i<10;++i){
-            testController.test1();
+        try{
+            for(int i=0;i<10;++i){
+                System.out.println(testController.test1());
+            }
+            for(int i=0;i<10;++i){
+                System.out.println(testController.test2());
+            }
+            for(int i=0;i<10;++i){
+                System.out.println(testController.test3());
+            }
+        }catch(Exception e){
+            e.printStackTrace();
         }
-        for(int i=0;i<10;++i){
-            testController.test2();
-        }
-        for(int i=0;i<10;++i){
-            testController.test3();
-        }
+
     }
 
 }
