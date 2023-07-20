@@ -46,22 +46,5 @@ public class RedisConfig {
         return template;
     }
 
-//    @Bean
-//    public RedisTemplate<String, String> redisTemplate2(RedisConnectionFactory factory) {
-//        RedisTemplate<String, String> template = new RedisTemplate<>();
-//        template.setConnectionFactory(factory);
-//
-//        //string的序列化
-//        StringRedisSerializer stringRedisSerializer = new StringRedisSerializer();
-//
-//        //key采用string的序列化方式
-//        template.setKeySerializer(stringRedisSerializer);
-//        //hash的key也是用string的序列化方式
-//        template.setHashKeySerializer(stringRedisSerializer);
-//
-//        template.afterPropertiesSet();
-//
-//        return template;
-//    }
 }
 

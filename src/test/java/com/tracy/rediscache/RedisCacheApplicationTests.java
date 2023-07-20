@@ -29,8 +29,8 @@ class RedisCacheApplicationTests {
 
     @Test
     void testReadWrite() throws IllegalAccessException, ClassNotFoundException, InstantiationException {
-        readWrite.write("tracy",new Student("tracy","female"),1000);
-        System.out.println(readWrite.read("tracy_com.tracy.rediscache.entity.Student"));
+        readWrite.writeObject("tracy",new Student("tracy","female"),1000);
+        System.out.println(readWrite.readObject("tracy_com.tracy.rediscache.entity.Student"));
     }
 
     @Test

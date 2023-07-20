@@ -12,7 +12,7 @@ public class ReadWrite {
     @Autowired
     RedisTemplate<String,Object> redisTemplate;
 
-    public void write(String keyword,Object obj,int seconds) throws IllegalAccessException {
+    public void writeObject(String keyword, Object obj, int seconds) throws IllegalAccessException {
         //1 获取反射
         Class<?> c=obj.getClass();
         //2 将对象的属性和属性值存入hash，key为keyword_全限定类名的拼接
@@ -26,7 +26,8 @@ public class ReadWrite {
         //3 设置过期时间，传入为0表示永不过期
         if(seconds!=0)redisTemplate.expire(key,seconds, TimeUnit.SECONDS);
     }
-    public Object read(String key) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+
+    public Object readObject(String key) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         if(Boolean.FALSE.equals(redisTemplate.hasKey(key)))return null;
         //1 获取类名
         Class<?> c=Class.forName(key.split("_")[1]);
