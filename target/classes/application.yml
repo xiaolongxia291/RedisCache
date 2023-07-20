@@ -4,3 +4,7 @@ spring:
     database: 0
     port: 6379
 
+redis:
+  N: 3
+  time: 60
+  access: 6
